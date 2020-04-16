@@ -4,7 +4,11 @@
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
 */
 
+// let principal = 200000; 
+// let interest_rate = 0.05; 
+// let years = 30; 
 
+let name = 'Jason'; 
 
 
 
@@ -17,6 +21,8 @@ Create another variable called `periods` and give it the value of years*12.
 */
 
 
+// let monthly_interest_rate = interest_rate/12;
+// let periods = years*12; 
 
 
 // 🏡 Task 2: Harder Math
@@ -29,6 +35,13 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 When your math is correct, monthlyRate will equal 1073.64
 */
 
+// let numerator = monthly_interest_rate * ( 1 + monthly_interest_rate ) ** periods 
+
+// let denominator =  ( 1 + monthly_interest_rate ) ** periods - 1;
+
+// let monthly_rate = principal * (numerator/denominator)
+
+// console.log(monthly_rate); 
 
 
 
@@ -38,7 +51,12 @@ When your math is correct, monthlyRate will equal 1073.64
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 
+// function mortgage_calculator(){
 
+// return name + ', your monthly rate is $' + monthly_rate; 
+// }
+
+// console.log(mortgage_calculator()); 
 
 
 
@@ -49,17 +67,52 @@ For example,
 mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 */
 
+function mortgage_calculator(p, i, n){
+
+    let monthly_interest_rate = i/12;
+    let periods = n*12; 
+
+    let numerator = monthly_interest_rate * ( 1 + monthly_interest_rate ) ** periods 
+    let denominator =  ( 1 + monthly_interest_rate ) ** periods - 1;
+    let monthly_rate = p * (numerator/denominator)
+
+    return monthly_rate; 
+
+}
+
+// console.log(mortgage_calculator(200000, 0.05, 30)); 
 
 
 
 
 // 🏡 Task 5: Conditionals
-/* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
+/* Add another parameter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
 
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 
+// function mortgage_calculator(p, i, n, c){
 
+//     if (c > 740){
+//         i = i - (i * (.005));
+//     } else if (c < 660){
+//         i = i + (i * (.005));
+//     } else {
+//         i = i;  
+//     }
+
+//     let monthly_interest_rate = i/12;
+//     let periods = n*12; 
+
+//     let numerator = monthly_interest_rate * ( 1 + monthly_interest_rate ) ** periods 
+//     let denominator =  ( 1 + monthly_interest_rate ) ** periods - 1;
+//     let monthly_rate = p * (numerator/denominator)
+
+//     return monthly_rate; 
+
+// }
+
+// console.log(mortgage_calculator(200000, 0.05, 30, 800));
 
 
 // 🏡 Task 6: Loops
@@ -79,6 +132,25 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 
+function variable_interest_rate(p, i, n){
+
+    for ( let x = 0; x< 9; x++) {
+
+        let new_rate = (i - 0.02) + ( x * 0.005);
+
+        let variable_interest = mortgage_calculator(p, new_rate, n); 
+
+        console.log(name + ", with an interest rate of " + new_rate + ", your monthly rate is " + variable_interest);
+
+    }
+
+}
+
+console.log(variable_interest_rate(200000, 0.04, 30));
+
+
+
+
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -87,6 +159,22 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 /*  🏡 Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function to calculate total monthly spending on housing */
 
+// function total_calculator(p, i, n, pt, hi, hoa){
+
+//     let monthly_interest_rate = i/12;
+//     let periods = n*12; 
+
+//     let numerator = monthly_interest_rate * ( 1 + monthly_interest_rate ) ** periods 
+//     let denominator =  ( 1 + monthly_interest_rate ) ** periods - 1;
+//     let monthly_rate = p * (numerator/denominator)
+
+//     let total = monthly_rate + pt + hi + hoa; 
+
+//     console.log('Your total monthly spending on housing will be ' + total); 
+
+// }
+
+// console.log(total_calculator(200000, 0.04, 30, 100, 50, 25));
 
 /* 🏡 Build a calculator function that accepts `monthly payment` and `interest rate` and returns the maximum loan that a person could afford */
 
